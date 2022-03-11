@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.springbook.biz.board.BoardVo;
+import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.JDBCUtil;
 
 //DAO (Data Access Object)
@@ -29,7 +29,7 @@ public class BoardDAO {
 	
 	//CRUD 기능의 메소드 구현
 	//글 등록
-	public void insertBoard(BoardVo vo) {
+	public void insertBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 insertBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
@@ -46,7 +46,7 @@ public class BoardDAO {
 	}
 	
 	//글 수정
-	public void updateBoard(BoardVo vo) {
+	public void updateBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 updateBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
@@ -63,7 +63,7 @@ public class BoardDAO {
 	}
 	
 	//글 삭제
-	public void deleteBoard(BoardVo vo) {
+	public void deleteBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 deleteBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
@@ -78,16 +78,16 @@ public class BoardDAO {
 	}
 	
 	//글 상세조회
-	public BoardVo getBoard(BoardVo vo) {
+	public BoardVO getBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 getBoard() 기능 처리");
-		BoardVo board = null;
+		BoardVO board = null;
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_GET);
 			stmt.setInt(1, vo.getSeq());
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				board = new BoardVo();
+				board = new BoardVO();
 				board.setSeq(rs.getInt("SEQ"));
 				board.setTitle(rs.getString("TITLE"));
 				board.setWriter(rs.getString("WRITER"));
@@ -104,15 +104,15 @@ public class BoardDAO {
 	}
 	
 	//글 목록 조회
-	public List<BoardVo> getBoardList(BoardVo vo) {
+	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("===> JDBC로 getBoardList() 기능 처리");
-		List<BoardVo> boardList = new ArrayList<BoardVo>();
+		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_LIST);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				BoardVo board = new BoardVo();
+				BoardVO board = new BoardVO();
 				board.setSeq(rs.getInt("SEQ"));
 				board.setTitle(rs.getString("TITLE"));
 				board.setWriter(rs.getString("WRITER"));
