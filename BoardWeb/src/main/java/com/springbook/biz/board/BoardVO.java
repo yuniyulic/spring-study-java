@@ -2,7 +2,6 @@ package com.springbook.biz.board;
 
 import java.sql.Date;
 
-//VO(Value Object)
 public class BoardVO {
 	private int seq;
 	private String title;
