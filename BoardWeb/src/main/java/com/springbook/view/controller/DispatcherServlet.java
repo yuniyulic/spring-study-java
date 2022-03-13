@@ -11,7 +11,7 @@ import com.springbook.biz.user.impl.UserDAO;
 
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		process(request, response);
 	}
@@ -28,6 +28,8 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println(path);
 		
 		//2. 클라이언트의 요청 path에 따라 적절히 분기처리 한다.
+		
+		//로그인
 		if(path.equals("/login.do")) {
 			System.out.println("로그인 처리");
 			
@@ -49,7 +51,6 @@ public class DispatcherServlet extends HttpServlet {
 			} else {
 				response.sendRedirect("login.jsp");
 			}
-			
 			
 		} else if(path.equals("/logout.do")) {
 			System.out.println("로그아웃 처리");

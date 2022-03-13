@@ -18,7 +18,7 @@ public class UserDAO {
 	private ResultSet rs = null;
 	
 	//SQL 명령어들
-	private final String USER_GET = "select * from users where id=? and password=?";
+	private final String USER_GET = "SELECT * FROM USERS WHERE ID=? AND PASSWORD=?";
 	
 	//CRUD 기능의 메소드 구현
 	//회원 등록
@@ -27,6 +27,7 @@ public class UserDAO {
 		try {
 			System.out.println("===> JDBC로 getUser() 기능 처리");
 			conn = JDBCUtil.getConnection();
+			System.out.println("===> JDBC로 getUser() 기능 처리완료");
 			stmt = conn.prepareStatement(USER_GET);
 			stmt.setString(1, vo.getId());
 			stmt.setString(2, vo.getPassword());

@@ -11,6 +11,7 @@ public class JDBCUtil {
 	public static Connection getConnection() {
 		try {
 			Class.forName("org.h2.Driver");
+			System.out.println("드라이버 연동 성공");
 			return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa","");
 		} catch (Exception e) {
 			e.printStackTrace();
