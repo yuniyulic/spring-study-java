@@ -16,20 +16,25 @@
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
-		<dependency>
+		<!--dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
 		    <version>1.4.199</version>
 		    <scope>runtime</scope>
-		</dependency>
+		</dependency-->
 
+	    <dependency>
+	        <groupId>com.h2database</groupId>
+	        <artifactId>h2</artifactId>
+	        <version>1.4.199</version>
+	    </dependency>
+	    
 		<!-- Spring -->
-		<dependency>
+		<!--dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
@@ -41,8 +46,17 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency-->
+		<dependency>
+			 <groupId>org.springframework</groupId>
+			  <artifactId>spring-context</artifactId>
+			   <version>3.1.0.RELEASE</version>
+			</dependency>
+			<dependency>
+			 <groupId>org.springframework</groupId>
+			  <artifactId>spring-webmvc</artifactId>
+			   <version>3.1.0.RELEASE</version>
 		</dependency>
-		
 		<!-- Spring JDBC -->
 		<dependency>
 			<groupId>org.springframework</groupId>

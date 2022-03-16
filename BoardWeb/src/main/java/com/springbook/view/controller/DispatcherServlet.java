@@ -12,23 +12,29 @@ import com.springbook.biz.user.impl.UserDAO;
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+							throws ServletException, IOException {
 		process(request, response);
+		System.out.println("doGet왔음");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("EUC-KR");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+							throws ServletException, IOException {
 		process(request, response);
+		request.setCharacterEncoding("UTF-8");
+		System.out.println("doPost왔음");
 	}
 	
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//1. 클라이언트의 요청 path 정보를 추출한다.
+		System.out.println("Dispatcher path정보 추출전");
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
 		System.out.println(path);
+		System.out.println("Dispatcher path정보 추출후");
 		
 		//2. 클라이언트의 요청 path에 따라 적절히 분기처리 한다.
-		
+		System.out.println("DispatcherServlet 들어옴");
 		//로그인
 		if(path.equals("/login.do")) {
 			System.out.println("로그인 처리");
