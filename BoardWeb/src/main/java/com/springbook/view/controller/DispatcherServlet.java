@@ -15,14 +15,12 @@ public class DispatcherServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 							throws ServletException, IOException {
 		process(request, response);
-		System.out.println("doGet왔음");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 							throws ServletException, IOException {
+		request.setCharacterEncoding("EUC-KR");
 		process(request, response);
-		request.setCharacterEncoding("UTF-8");
-		System.out.println("doPost왔음");
 	}
 	
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -74,3 +72,4 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 }
+
