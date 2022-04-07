@@ -2,13 +2,30 @@ package com.springbook.biz.board;
 
 import java.sql.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BoardVO {
+	@XmlAttribute
 	private int seq;
 	private String title;
 	private String writer;
 	private String content;
 	private Date regDate;
 	private int cnt;
+	@XmlTransient
+	private String searchCondition;
+	@XmlTransient
+	private String searchKeyword;
+	@XmlTransient
+	private MultipartFile uploadFile;
 	
 	public int getSeq() {
 		return seq;
@@ -45,6 +62,27 @@ public class BoardVO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	@JsonIgnore
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	@JsonIgnore
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	@JsonIgnore
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	
 	//나중에 VO 객체의 값을 출력할 때 요긴하게 사용 가능
